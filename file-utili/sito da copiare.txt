@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Francesco & Francesca</title>
+    <meta
+      name="description"
+      content="Informazioni utili per il matrimonio di Francesco e Francesca"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="olive-branches" aria-hidden="true">
+          <svg class="branch branch-1" width="220" height="120" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#6f7f3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M210 20c-36 8-72 54-110 52" opacity="0.95"/>
+              <g transform="translate(30,18)">
+                <ellipse cx="20" cy="12" rx="6" ry="10" fill="#6f7f3e" />
+                <ellipse cx="40" cy="4" rx="6" ry="10" fill="#6f7f3e" />
+                <ellipse cx="60" cy="16" rx="6" ry="10" fill="#6f7f3e" />
+                <ellipse cx="80" cy="6" rx="6" ry="10" fill="#6f7f3e" />
+              </g>
+            </g>
+          </svg>
+
+          <svg class="branch branch-2" width="160" height="90" viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#4f6030" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 70c36-34 90-46 140-36" opacity="0.9"/>
+              <g transform="translate(16,12)">
+                <ellipse cx="16" cy="12" rx="5" ry="8" fill="#4f6030" />
+                <ellipse cx="36" cy="6" rx="5" ry="8" fill="#4f6030" />
+                <ellipse cx="56" cy="14" rx="5" ry="8" fill="#4f6030" />
+              </g>
+            </g>
+          </svg>
+
+          <svg class="branch branch-3" width="120" height="70" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#6f7f3e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 60c28-26 60-35 104-24" opacity="0.85"/>
+              <g transform="translate(8,8)">
+                <ellipse cx="12" cy="10" rx="4" ry="7" fill="#6f7f3e" />
+                <ellipse cx="28" cy="4" rx="4" ry="7" fill="#6f7f3e" />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <p class="eyebrow">Siamo felici di condividere con voi</p>
+        <h1>Francesco & Francesca</h1>
+        <p class="date">05 settembre 2026</p>
+        <p class="intro">
+          La vostra presenza al nostro grande giorno è già un dono prezioso. Vi
+          ringraziamo di condividere con noi questo momento.
+        </p>
+        <div class="countdown" aria-live="polite">
+          <h2>Manca al grande giorno</h2>
+          <div class="countdown-grid">
+            <div>
+              <span id="days">00</span>
+              <small>giorni</small>
+            </div>
+            <div>
+              <span id="hours">00</span>
+              <small>ore</small>
+            </div>
+            <div>
+              <span id="minutes">00</span>
+              <small>minuti</small>
+            </div>
+            <div>
+              <span id="seconds">00</span>
+              <small>secondi</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="details-grid">
+        <article class="card">
+          <h3>Cerimonia</h3>
+          <p class="time">15:30</p>
+          <p>
+            Santuario della Madonna di Ripaia<br />
+            Via Vecchia di Treggiaia, 56025 Treggiaia, Pontedera PI, Italia
+          </p>
+          
+        </article>
+
+        <article class="card">
+          <h3>Ricevimento</h3>
+          <p class="time">18:15</p>
+          <p>
+            Resort Casale le Torri<br />
+            Via Galleta, 4, 56038 Ponsacco PI, Italia
+          </p>
+          
+        </article>
+      </section>
+
+      <section class="card full-width">
+        <h3>Come arrivare</h3>
+        <p>
+          Dal casale dove allogiate, “Dimora Toscana”, il percorso sarà questo:
+          <a
+            href="https://maps.app.goo.gl/eCGifYeSPPb5cFtK9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            percorso da Dimora Toscana alla Chiesa
+          </a>
+        </p>
+        <p>
+          Il tragitto dalla chiesa al ricevimento è disponibile qui:
+          <a
+            href="https://maps.app.goo.gl/E6wm5QcoCqEreVYt9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            percorso dalla chiesa al ricevimento
+          </a>
+        </p>
+      </section>
+
+      <section class="card full-width gift-card">
+        <h3>Un pensiero per il nostro futuro</h3>
+        <p>
+          Se è vostro desiderio farci un regalo, saremmo felici che questo possa
+          essere un pensiero da inserire nel nostro salvadanaio per costruire il
+          futuro insieme. Quando lo useremo, penseremo con gioia a voi e al vostro
+          gesto, e avrete contribuito alla nostra felicità.
+        </p>
+        <p class="gift-highlight">Grazie di cuore.</p>
+        <div class="iban-box">
+          <p><strong>IBAN:</strong> CH19 0878 1000 2780 3390 0</p>
+          <p><strong>Intestato a:</strong> Francesco Nistico'</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+------ 
+
+:root {
+  color-scheme: light;
+  --bg: #f7f3e8;
+  --bg-alt: #e7efe0;
+  --text: #33412d;
+  --accent: #6f7f3e;
+  --accent-strong: #4f6030;
+  --border: rgba(79, 96, 48, 0.18);
+  --cream: #fffdf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(111, 127, 62, 0.12), transparent 28%),
+    linear-gradient(135deg, var(--bg) 0%, #fdfbf4 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 1200'%3E%3Cpath fill='%236f7f3e' fill-opacity='0.06' d='M0 835c140-115 302-167 441-164 146 3 266 69 373 161 47 41 133 120 386 114V0H0z'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: bottom;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+.olive-branches {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+.olive-branches svg.branch {
+  position: absolute;
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 12px rgba(79,96,48,0.06));
+}
+
+.olive-branches .branch-1 { left: -20px; top: -18px; transform: rotate(-12deg); }
+.olive-branches .branch-2 { right: -10px; top: 8px; transform: rotate(8deg); }
+.olive-branches .branch-3 { left: 50%; top: 84px; transform: translateX(-50%) rotate(-6deg); }
+
+@media (max-width: 700px) {
+  .olive-branches .branch-1 { left: -36px; top: -8px; width: 180px; }
+  .olive-branches .branch-2 { right: -24px; top: 26px; width: 140px; }
+  .olive-branches .branch-3 { top: 120px; width: 100px; }
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.8rem);
+  margin: 0 0 0.4rem;
+  color: var(--accent-strong);
+}
+
+.date {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+  color: var(--accent);
+}
+
+.intro {
+  max-width: 780px;
+  margin: 1rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.countdown {
+  margin: 2rem auto 0;
+  padding: 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: rgba(255, 253, 248, 0.9);
+  box-shadow: 0 18px 45px rgba(79, 96, 48, 0.12);
+  max-width: 700px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.countdown-grid div {
+  padding: 1rem 0.5rem;
+  background: linear-gradient(135deg, var(--bg-alt), #f6f9ef);
+  border-radius: 16px;
+}
+
+.countdown-grid span {
+  display: block;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: var(--accent-strong);
+}
+
+.countdown-grid small {
+  display: block;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+  color: var(--accent-strong);
+}
+
+.time {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 0;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.full-width {
+  margin-top: 1.2rem;
+}
+
+.gift-card {
+  background: linear-gradient(135deg, #f3f6e7 0%, var(--cream) 100%);
+}
+
+.gift-highlight {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+.iban-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(111, 127, 62, 0.12);
+}
+
+@media (max-width: 700px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

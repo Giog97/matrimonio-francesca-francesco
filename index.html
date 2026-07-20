@@ -317,9 +317,50 @@
     background-position:center 42%;
     opacity:0.6;
   }
+  /* Nella fascia centrale non basta togliere il velo: la foto e' comunque
+     velata dal suo opacity:0.6, e resterebbe smorta. Qui quella velatura la
+     facciamo con una maschera (alpha 0.6 = stesso risultato dell'opacity),
+     cosi' sulla fascia possiamo portarla a 1 e vedere la foto com'e'.
+     I punti sono gli stessi del velo, quindi le due sfumature vanno insieme.
+     Sta dentro @supports apposta: se le maschere non ci sono deve restare
+     l'opacity fisso di sopra, altrimenti la foto resterebbe piena anche
+     sotto al testo e il contrasto crollerebbe. */
+  @supports (mask-image:linear-gradient(#000,#000)) or (-webkit-mask-image:linear-gradient(#000,#000)){
+    .card-photo{
+      opacity:1;
+      --foto-finestra:linear-gradient(to bottom,
+        rgba(0,0,0,0.6) var(--finestra-inizio, 46%),
+        #000            var(--finestra-piena-da, 53%),
+        #000            var(--finestra-piena-a, 64%),
+        rgba(0,0,0,0.6) var(--finestra-fine, 70%));
+      -webkit-mask-image:var(--foto-finestra);
+              mask-image:var(--foto-finestra);
+    }
+  }
   .card-veil{
     position:absolute; inset:0; z-index:1;
     background:linear-gradient(155deg, rgba(255,253,248,0.6) 0%, rgba(255,253,248,0.68) 100%);
+    /* Fascia centrale: nel vuoto lasciato dalla mappa il velo sparisce del
+       tutto e la foto si vede piena, con i due bordi sfumati per non lasciare
+       una riga netta. E' una maschera e non un secondo sfondo, cosi' fuori
+       dalla fascia il velo conserva la sua sfumatura diagonale.
+       I quattro punti li scrive lo script in fondo, misurando il vuoto vero di
+       ogni scheda: la fascia parte dove finisce il testo e si chiude dove
+       comincia il bottone, a qualsiasi larghezza e comunque vadano a capo gli
+       indirizzi. Ancorarla al vuoto invece che a percentuali fisse e' quello
+       che tiene il testo sempre su velo pieno: a 320px l'indirizzo della
+       Cerimonia arriva al 42.9% dell'altezza, a 1280px si ferma al 33%.
+       I valori di riserva qui sotto valgono solo se lo script non gira e
+       stanno dentro il vuoto piu' stretto misurato (42.9%-72.4%).
+       Senza supporto per le maschere resta il velo pieno: si perde l'effetto,
+       non la leggibilita'. */
+    --veil-finestra:linear-gradient(to bottom,
+      #000          var(--finestra-inizio, 46%),
+      rgba(0,0,0,0) var(--finestra-piena-da, 53%),
+      rgba(0,0,0,0) var(--finestra-piena-a, 64%),
+      #000          var(--finestra-fine, 70%));
+    -webkit-mask-image:var(--veil-finestra);
+            mask-image:var(--veil-finestra);
   }
   .card-body{position:relative; z-index:2;}
 
@@ -338,11 +379,14 @@
   .card-cerimonia .card-photo{background-position:center 55%;}
 
   /* ================= anteprime mappe =================
+     Sono rimaste solo in "Come arrivare": nelle schede Cerimonia, Ricevimento
+     e Alloggio al loro posto c'e' .map-space, che tiene lo stesso ingombro
+     ma lascia vedere la foto della scheda.
      Le mappe si vedono senza dover cliccare, ma l'iframe viene creato solo
      poco prima di arrivarci scrollando (vedi lo script in fondo).
      Il loading="lazy" nativo non basta: Chrome carica comunque gli iframe
-     fino a ~2000px sotto lo schermo, quindi da telefono partirebbero tutte
-     e cinque le mappe all'apertura, per diversi MB. */
+     fino a ~2000px sotto lo schermo, quindi da telefono partirebbero
+     entrambe le mappe all'apertura, per diversi MB. */
   .map-frame{
     position:relative;
     width:100%;
@@ -370,6 +414,15 @@
     transition:opacity .6s ease;
   }
   .map-frame.is-loaded iframe{opacity:1;}
+
+  /* Il vuoto lasciato dall'anteprima tolta: stesso ingombro di .map-frame,
+     ma trasparente e senza bordo, cosi' al suo posto si vede la foto della
+     scheda. Va tenuto PRIMA di .map-wide, che ne corregge le proporzioni. */
+  .map-space{
+    width:100%;
+    aspect-ratio:4/3;
+    margin-top:1.1rem;
+  }
   .map-wide{aspect-ratio:16/10;}
 
   /* ================= percorsi ================= */
@@ -639,9 +692,7 @@
         <p class="venue">Santuario della Madonna di Ripaia</p>
         <p class="addr">Via Vecchia di Treggiaia<br>56025 Treggiaia, Pontedera (PI), Italia</p>
 
-        <div class="map-frame"
-             data-map="https://www.google.com/maps?q=Santuario+della+Madonna+di+Ripaia,+Via+Vecchia+di+Treggiaia,+56025+Treggiaia,+Pontedera+PI,+Italia&amp;output=embed"
-             data-title="Mappa: Santuario della Madonna di Ripaia"></div>
+        <div class="map-space" aria-hidden="true"></div>
 
         <div class="btn-row">
           <a class="btn btn-ghost" target="_blank" rel="noopener"
@@ -661,9 +712,7 @@
         <p class="venue">Resort Casale le Torri</p>
         <p class="addr">Via Galleta, 4<br>56038 Ponsacco (PI), Italia</p>
 
-        <div class="map-frame"
-             data-map="https://www.google.com/maps?q=Resort+Casale+Le+Torri,+Via+Galleta,+4,+56038+Ponsacco+PI,+Italia&amp;output=embed"
-             data-title="Mappa: Resort Casale le Torri"></div>
+        <div class="map-space" aria-hidden="true"></div>
 
         <div class="btn-row">
           <a class="btn btn-ghost" target="_blank" rel="noopener"
@@ -687,9 +736,7 @@
       <p class="venue" style="margin-top:0.5rem;">Dimora Toscana</p>
       <p class="addr">Via delle Colline per Legoli, 5<br>56025 Pontedera (PI), Italia</p>
 
-      <div class="map-frame map-wide"
-           data-map="https://www.google.com/maps?q=Dimora+Toscana,+Via+delle+Colline+per+Legoli,+5,+56025+Pontedera+PI,+Italia&amp;output=embed"
-           data-title="Mappa: Dimora Toscana"></div>
+      <div class="map-space map-wide" aria-hidden="true"></div>
 
       <div class="btn-row">
         <a class="btn btn-ghost" target="_blank" rel="noopener"
@@ -873,6 +920,57 @@
       slots.forEach(function(s){ mapIO.observe(s); });
     } else {
       slots.forEach(loadMap);
+    }
+
+    /* ---------- fascia chiara nelle schede con la foto ----------
+       La maschera del velo (vedi .card-veil nel CSS) si apre sul vuoto
+       lasciato dalla mappa: qui misuriamo quel vuoto scheda per scheda e
+       passiamo al CSS i quattro punti della sfumatura.
+       Serve lo script perche' il punto in cui finisce il testo dipende da come
+       vanno a capo gli indirizzi, e questo cambia con la larghezza: una
+       percentuale fissa buona su desktop finirebbe sotto il testo sul
+       telefono, dove l'indirizzo occupa tre righe invece di due. */
+    var schedeFoto = document.querySelectorAll('.card-foto');
+
+    function allineaFinestra(card){
+      var vuoto = card.querySelector('.map-space');
+      if(!vuoto) return;
+      var cr = card.getBoundingClientRect();
+      var vr = vuoto.getBoundingClientRect();
+      if(!cr.height || !vr.height) return;
+      var inizio = (vr.top - cr.top) / cr.height * 100;
+      var fine = (vr.bottom - cr.top) / cr.height * 100;
+      /* un quinto della fascia per lato se ne va in sfumatura: il centro resta
+         senza velo e i bordi non lasciano una riga netta */
+      var sfuma = (fine - inizio) * 0.2;
+      card.style.setProperty('--finestra-inizio', inizio.toFixed(2) + '%');
+      card.style.setProperty('--finestra-piena-da', (inizio + sfuma).toFixed(2) + '%');
+      card.style.setProperty('--finestra-piena-a', (fine - sfuma).toFixed(2) + '%');
+      card.style.setProperty('--finestra-fine', fine.toFixed(2) + '%');
+    }
+
+    function allineaFinestre(){
+      schedeFoto.forEach(allineaFinestra);
+    }
+
+    allineaFinestre();
+
+    /* l'altezza della scheda cambia col ridimensionamento, con la rotazione
+       del telefono e quando arrivano i font: rimisuriamo a ogni cambio.
+       Teniamo tutti e due i sistemi e non uno come ripiego dell'altro: il
+       ResizeObserver prende anche i cambi che non passano da un resize della
+       finestra (font appena arrivati, testo piu' lungo), il listener resta
+       come rete se le sue callback non arrivano. Costano una manciata di
+       misure, quindi meglio coprire tutto. */
+    window.addEventListener('resize', allineaFinestre);
+    if('ResizeObserver' in window){
+      var cardRO = new ResizeObserver(function(entries){
+        entries.forEach(function(entry){ allineaFinestra(entry.target); });
+      });
+      schedeFoto.forEach(function(c){ cardRO.observe(c); });
+    }
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(allineaFinestre);
     }
 
     /* ---------- comparsa dolce allo scroll ---------- */
